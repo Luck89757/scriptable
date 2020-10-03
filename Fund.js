@@ -74,7 +74,9 @@ async function getinfo(jcode) {
     if (data["expectGrowth"].indexOf("-") == -1) {
         expectGrowth.textColor = new Color("#FF4500")
     }
-
+    widget.addSpacer();
+    widget.spacing = 4;
+    
     Script.setWidget(widget)
     widget.presentSmall()
     return widget
