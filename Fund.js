@@ -34,7 +34,6 @@ async function getinfo(jcode) {
     widget.addSpacer();
     widget.spacing = 5;
     
-    
     let jijin = widget.addText('👀 基金详情')
     jijin.font = new Font('SF Mono', 12);
     jijin.textColor = new Color("#F8F8FF")
