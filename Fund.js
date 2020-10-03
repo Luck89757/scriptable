@@ -75,7 +75,7 @@ async function getinfo(jcode) {
     }
 
     Script.setWidget(widget)
-    Script.complete()
+    widget.presentSmall()
     return widget
 }
 jcode = args.widgetParameter
