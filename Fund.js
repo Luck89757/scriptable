@@ -39,6 +39,7 @@ async function getinfo(jcode) {
     let jijin = widget.addText('📈 基金详情')
     jijin.font = new Font('SF Mono', 15);
     jijin.textColor = new Color("#F8F8FF")
+    jijin.textOpacity = 0.7;
     
     let expectWorthDate = widget.addText(data["expectWorthDate"])
     expectWorthDate.font = new Font('SF Mono', 12);
