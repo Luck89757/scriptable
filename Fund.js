@@ -1,13 +1,15 @@
 // 自用显示基金详情
+// 选择组件时候填写对应基金代码即可
 // 接口使用 https://www.doctorxiong.club/
 /**
  * Author: Luck89757
  * Github: https://github.com/Luck89757
  */
+const goupdate = true;  //更新开关
+const $ = importModule("Env");
 
-// 引用
 async function getinfo(jcode) {
-    const $ = importModule("Env");
+    
     const url = {
         url: `https://api.doctorxiong.club/v1/fund?code=` + jcode,
         headers: {
@@ -32,10 +34,10 @@ async function getinfo(jcode) {
     bgColor.locations = [0.0, 1.0];
     widget.backgroundGradient = bgColor;
     widget.addSpacer();
-    widget.spacing = 5;
+    widget.spacing = 4;
     
-    let jijin = widget.addText('👀 基金详情')
-    jijin.font = new Font('SF Mono', 12);
+    let jijin = widget.addText('📈 基金详情')
+    jijin.font = new Font('SF Mono', 15);
     jijin.textColor = new Color("#F8F8FF")
     
     let expectWorthDate = widget.addText(data["expectWorthDate"])
@@ -74,8 +76,26 @@ async function getinfo(jcode) {
 
     Script.setWidget(widget)
     Script.complete()
-    return 1
+    return widget
 }
 jcode = args.widgetParameter
 if(jcode === null ) jcode = '161725';
 getinfo(jcode)
+
+//更新代码
+function update() {
+  log("🔔更新脚本开始!");
+  scripts.forEach(async (script) => {
+    await $.getFile(script);
+  });
+  log("🔔更新脚本结束!");
+}
+
+const scripts = [
+  {
+    moduleName: "Fund",
+    url:
+      "https://raw.githubusercontent.com/Luck89757/scriptable/main/Fund.js",
+  },
+];
+if (goupdate == true) update();
